@@ -12,7 +12,7 @@ data = data.drop("release_date",axis=1)
 data = data.drop("speechiness",axis = 1)
 data = data.drop("album_id",axis=1)
 
-print(data.head,data.info())
+
 
 
 from sklearn.preprocessing import LabelEncoder
@@ -23,11 +23,41 @@ columes_1 = ["track_name","artist_names","year","acousticness","danceability","d
 for j in columes_1:
     data[j] = encoder1.fit_transform(data[j])
 
-print(data.head())
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
-tfidf = TfidfVectorizer(stop_words="english")
+def ask_usr_1():
+
+    user_I1 = input("What type of music would you like to listen to? ").lower()
+    request = user_I1.split()
+    print(request)
+
+    
+    if "high" in request:
+        v1 = 1
+       
+    elif "low" in request:
+        v1 = 0
+
+    if "loud" in request:
+        volume = 1 
+
+    elif "quite" in request or "soft" in request :
+        volume = 0
+
+    if "tempo" in request:
+        tempo = 1
+        print("Tempo : ",tempo)
+
+    
+
+    print("v1 : ",v1)
+    print("volume : ",volume)
+    
+
+
+    
+ask_usr_1()
+
+
 
 
